@@ -15,8 +15,11 @@ async function main() {
 
     const imageSrc = await getRandomImageByBreed(value);
     const image = createImage(imageSrc);
-    removeFirstChild(imageContainer);
-    imageContainer.append(image);
+    if (imageContainer.firstChild) {
+      imageContainer.replaceChild(image, imageContainer.firstChild)
+    } else {
+      imageContainer.append(image)
+    }
   });
 }
 
